@@ -15,12 +15,11 @@ class Sapos {
 		~Sapos();
 
 		void setId(short int id);
+		void pular();
 
 		int getId();
 		int getDistanciaPercorrida();
 		int getPulosDados();
-
-		void pular();
 	
 };
 
