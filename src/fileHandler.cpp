@@ -7,3 +7,8 @@ void readCSVFile(ifstream &file, int line) {
 	}
 	getline(file, dummy, ';');
 }
+
+void resetStreamCursor(ifstream &file) {
+	file.clear();
+	file.seekg(0, file.beg);
+}

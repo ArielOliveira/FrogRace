@@ -38,6 +38,8 @@ Sapo::Sapo(int line) {
 		file >> *this;
 	}
 
+	preloaded = true;
+
 	file.close();
 }
 

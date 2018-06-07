@@ -98,15 +98,15 @@ void carregarDados(List<T> *l, const char *c) {
 	if (!file) {
 		cout << "Erro ao abrir arquivo!" << endl;
 	} else {
-		string dummy;
-		int linhas;
+		resetStreamCursor(file);
+		string dummy = "";
+		int linhas = 0;
 		while(getline(file, dummy, '\n')) {linhas++;}
 
 		for (int i = 0; i < linhas; i++) {
 			l->insertAtTail(new Y(i));
 		}
 	}
-
 	file.close();
 }
 
@@ -129,14 +129,17 @@ void criarSapo(List<Sapo*> *s) {
 
 	while(nomeExiste(s, nome, "do seu sapo")) cout << "Nome já existe. Tente outro nome!" << endl;
 
-	List<Sapo*>::iterator it = s->getEnd();
-	it--;
-	
-	Sapo *sapo = *it;
-	s->insertAtTail(new Sapo(nome, sapo->getId()+1, 0, 0, 0, 0));
-
-	it++;
-	salvarDado<Sapo>(*(*it), diretorioSapos);
+	if (s->getSize() > 0) {
+		List<Sapo*>::iterator it = s->getEnd();
+		it--;
+		Sapo *sapo = *it;
+		s->insertAtTail(new Sapo(nome, sapo->getId()+1, 0, 0, 0, 0));
+		it++;
+		salvarDado<Sapo>(*(*it), diretorioSapos);
+	} else {
+		s->insertAtTail(new Sapo(nome, 0, 0, 0, 0, 0));
+		salvarDado<Sapo>(*s->getData(1), diretorioSapos);
+	}
 }
 
 void criarCorrida(List<Corrida*> *c) {
@@ -151,33 +154,35 @@ void criarCorrida(List<Corrida*> *c) {
 		stringstream(valor) >> tamanho;
 	}
 
-	List<Corrida*>::iterator it = c->getEnd();
-	it--;
-	
-	Corrida *corrida = *it;
-	c->insertAtTail(new Corrida(nome, corrida->getId()+1, tamanho));
-
-	it++;
-	salvarDado<Corrida>(*(*it), diretorioCorridas);
+	if (c->getSize() > 0) {
+		List<Corrida*>::iterator it = c->getEnd();
+		it--;	
+		Corrida *corrida = *it;
+		c->insertAtTail(new Corrida(nome, corrida->getId()+1, tamanho));
+		it++;
+		salvarDado<Corrida>(*(*it), diretorioCorridas);
+	} else {
+		c->insertAtTail(new Corrida(nome, 0, tamanho));
+		salvarDado<Corrida>(*c->getData(1), diretorioCorridas);
+	}
 }
 
 int main() {
 
-
 	List<Sapo*> *sapos = new List<Sapo*>();
 	carregarDados<Sapo*, Sapo>(sapos, diretorioSapos);
-
 
 	List<Corrida*> *corridas = new List<Corrida*>();
 	carregarDados<Corrida*, Corrida>(corridas, diretorioCorridas);
 
-	//criarSapo(sapos);
+	criarSapo(sapos);
 
 	criarCorrida(corridas);
 
-	for (List<Sapo*>::iterator it = sapos->getBegin(); it != sapos->getEnd(); it++) {
-		cout << *(*it) << endl;
-	}
+	
+	for (List<Corrida*>::iterator it = corridas->getBegin(); it != corridas->getEnd(); it++) {
+			cout << *(*it) << endl;
+		}
 
 	/*
 	ofstream file;
