@@ -12,20 +12,24 @@ using std::cin;
 using std::cout;
 using std::endl;
 
-#include "sapos.h"
+#include "sapo.h"
+
+#include "lista.h"
 
 #define TAMANHO_TOTAL_CORRIDA 100
 
-int Sapos::distanciaCorrida = TAMANHO_TOTAL_CORRIDA;
+int Sapo::distanciaCorrida = TAMANHO_TOTAL_CORRIDA;
 
-bool venceu(Sapos *sapo) {
+
+/*
+bool venceu(Sapo *sapo) {
 	sapo->pular();
 
 	return (sapo->getDistanciaPercorrida() >= TAMANHO_TOTAL_CORRIDA);
 }
 
-Sapos* determinaVencedor(Sapos *sapo_1, Sapos *sapo_2, Sapos *sapo_3) {
-	Sapos *sapo_ptr;
+Sapo* determinaVencedor(Sapo *sapo_1, Sapo *sapo_2, Sapo *sapo_3) {
+	Sapo *sapo_ptr;
 
 	bool continua = true;
 
@@ -49,19 +53,26 @@ Sapos* determinaVencedor(Sapos *sapo_1, Sapos *sapo_2, Sapos *sapo_3) {
 	return NULL;
 }
 
-int main() {
-	Sapos *sapo_1, *sapo_2, *sapo_3;
-	
-	
-	sapo_1 = new Sapos(1);
-	sapo_2 = new Sapos(2);
-	sapo_3 = new Sapos(3);
+*/
 
-	Sapos *sapo_ptr = determinaVencedor(sapo_1, sapo_2, sapo_3);
+int main() {
+
+	List<Sapo*> *sapos = new List<Sapo*>();
+
+
+	/*
+	Sapo *sapo_1, *sapo_2, *sapo_3;
+	
+	
+	sapo_1 = new Sapo(1);
+	sapo_2 = new Sapo(2);
+	sapo_3 = new Sapo(3);
+
+	Sapo *sapo_ptr = determinaVencedor(sapo_1, sapo_2, sapo_3);
 
 	cout << "O sapo " << sapo_ptr->getId() << " venceu com "
 		 << sapo_ptr->getPulosDados() <<" pulos, percorrendo " 
 		 << sapo_ptr->getDistanciaPercorrida() << endl;
-
+	*/
 	return 0;
 }
