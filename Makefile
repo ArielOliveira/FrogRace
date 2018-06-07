@@ -5,13 +5,14 @@ SRC_DIR = ./src
 OBJ_DIR = ./build
 BIN_DIR = ./bin
 DOC_DIR = ./doc
+DAT_DIR = ./data
 LIB_DIR = ./lib
 
 CC = g++
 
 CPPFLAGS = -Wall -pedantic -ansi -std=c++11
 
-objs = ./build/main.o ./build/sapo.o ./build/fileHandler.o
+objs = ./build/main.o ./build/sapo.o ./build/corrida.o ./build/fileHandler.o
 
 corridaSapo: $(corridaSapo)
 
@@ -25,9 +26,12 @@ $(corridaSapo): $(objs)
 ./build/sapo.o: ./src/sapo.cpp ./include/sapo.h
 	$(CC) -c $(CPPFLAGS) $< -o $@	
 
+./build/corrida.o: ./src/corrida.cpp ./include/corrida.h
+	$(CC) -c $(CPPFLAGS) $< -o $@	
+
 ./build/fileHandler.o: ./src/fileHandler.cpp ./include/fileHandler.h
 	$(CC) -c $(CPPFLAGS) $< -o $@	
-	
+
 debug: CPPFLAGS += -g -O0
 debug: acervo
 
@@ -37,6 +41,7 @@ dir:
 	mkdir -p include
 	mkdir -p src
 	mkdir -p doc
+	mkdir -p data
 	mkdir -p lib
 	mkdir -p test
 

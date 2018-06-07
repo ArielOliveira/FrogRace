@@ -6,11 +6,17 @@
 #include <string>
 using std::string;
 
+#include <fstream>
+using std::ifstream;
+using std::ofstream;
+
 #include <istream>
 using std::istream;
 
 #include <ostream>
 using std::ostream;
+
+static const char *diretorioSapos = "./data/sapos.csv";
 
 class Sapo {
 	private:
@@ -35,6 +41,7 @@ class Sapo {
 		static int distanciaCorrida;
 
 		Sapo(string nome, short int id, int vitorias, int empates, int pulosDadosTotal, int provasDisputadas);
+		Sapo(int line);
 		Sapo();
 		~Sapo();
 
@@ -56,6 +63,8 @@ class Sapo {
 		friend istream& operator>> (istream &i, Sapo &_s);
 
 		friend ostream& operator<< (ostream &o, const Sapo &_s);
+
+		friend ofstream& operator<< (ofstream &of, const Sapo &_s);
 };
 
 #endif

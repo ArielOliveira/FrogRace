@@ -1,5 +1,12 @@
 #include "sapo.h"
 
+#include "fileHandler.h"
+
+#include <iostream>
+
+#include <sstream>
+using std::stringstream;
+
 #define PULO_MAXIMO 5
 
 std::random_device Sapo::rd{};
@@ -18,6 +25,20 @@ Sapo::Sapo(string nome, short int id, int vitorias, int empates, int pulosDadosT
 	distanciaPercorrida = 0;
 
 	preloaded = true;
+}
+
+Sapo::Sapo(int line) {
+	ifstream file;
+	file.open(diretorioSapos);
+
+	if (!file) {
+		std::cout << "Erro ao abrir arquivo!" << std::endl;
+	} else {
+		readCSVFile(file, line);
+		file >> *this;
+	}
+
+	file.close();
 }
 
 Sapo::Sapo() {
@@ -70,9 +91,21 @@ void Sapo::pular() {
  	i.ignore();
 
  	i >> _s.provasDisputadas;
- 	i.ignore();
 
  	return i;
+ }
+
+ ofstream& operator<< (ofstream &of, const Sapo &_s) {
+
+ 	of << std::to_string(_s.id) << ';'
+ 	   << _s.nome << ';'
+ 	   << std::to_string(_s.id) << ';'
+ 	   << std::to_string(_s.vitorias) << ';'
+ 	   << std::to_string(_s.empates) << ';'
+ 	   << std::to_string(_s.pulosDadosTotal) << ';'
+ 	   << std::to_string(_s.provasDisputadas) << ';' << std::endl;
+	
+ 	return of;
  }
 
  ostream& operator<< (ostream &o, const Sapo &_s) {

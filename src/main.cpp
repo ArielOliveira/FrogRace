@@ -12,7 +12,9 @@ using std::cin;
 using std::cout;
 using std::endl;
 
+#include "fileHandler.h"
 #include "sapo.h"
+#include "corrida.h"
 
 #include "lista.h"
 
@@ -58,6 +60,24 @@ Sapo* determinaVencedor(Sapo *sapo_1, Sapo *sapo_2, Sapo *sapo_3) {
 int main() {
 
 	List<Sapo*> *sapos = new List<Sapo*>();
+
+	List<Corrida*> *corridas = new List<Corrida*>();
+
+	sapos->insertAtTail(new Sapo("Frog", 0, 0, 0, 0, 0));
+	sapos->insertAtTail(new Sapo("Frogette", 1, 0, 0, 0, 0));
+
+	ofstream file;
+
+	file.open(diretorioSapos, std::ios::trunc);
+
+	if (!file) {
+		cout << "Erro ao escrever no arquivo!" << endl;
+	} else {
+		for (List<Sapo*>::iterator it = sapos->getBegin(); it != sapos->getEnd(); it++) {
+			file << *(*it);
+		}
+	}
+
 
 
 	/*
