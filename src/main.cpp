@@ -12,15 +12,20 @@ using std::cin;
 using std::cout;
 using std::endl;
 
+#include <sstream>
+using std::stringstream;
+
 #include "fileHandler.h"
 #include "sapo.h"
 #include "corrida.h"
 
 #include "lista.h"
 
-#define TAMANHO_TOTAL_CORRIDA 100
+#define TAMANHO_MINIMO_CORRIDA 100
 
-int Sapo::distanciaCorrida = TAMANHO_TOTAL_CORRIDA;
+#define TAMANHO_MAXIMO_CORRIDA 500
+
+//int Sapo::distanciaCorrida = TAMANHO_TOTAL_CORRIDA;
 
 
 /*
@@ -57,15 +62,124 @@ Sapo* determinaVencedor(Sapo *sapo_1, Sapo *sapo_2, Sapo *sapo_3) {
 
 */
 
+void exibirSaposStats(List<Sapo*> *s) {
+	for (List<Sapo*>::iterator it = s->getBegin(); it != s->getEnd(); it++) {
+		cout << *(*it) << endl;
+	}
+}
+
+void exibirCorridasStats(List<Corrida*> *c) {
+	for (List<Corrida*>::iterator it = c->getBegin(); it != c->getEnd(); it++) {
+		cout << *(*it) << endl;
+	}
+}
+
+template <typename T>
+bool nomeExiste(List<T> *s, string &nome, const char *k) {
+
+	cout << "<><><><> Insira o nome " << k << "<><><><>" << endl;
+	cout << "Nome: ";
+	getline(cin, nome);
+
+	for (typename List<T>::iterator it = s->getBegin(); it != s->getEnd(); it++) {
+		T sapo = *it;
+
+		if (sapo->getNome() == nome) return true;
+	}
+
+	return false;
+}
+
+template <typename T, typename Y>
+void carregarDados(List<T> *l, const char *c) {
+	ifstream file;
+	file.open(c);
+
+	if (!file) {
+		cout << "Erro ao abrir arquivo!" << endl;
+	} else {
+		string dummy;
+		int linhas;
+		while(getline(file, dummy, '\n')) {linhas++;}
+
+		for (int i = 0; i < linhas; i++) {
+			l->insertAtTail(new Y(i));
+		}
+	}
+
+	file.close();
+}
+
+template <typename T>
+void salvarDado(T obj, const char *c) {
+	ofstream file;
+	file.open(c, std::ios::app);
+
+	if (!file) {
+		cout << "Erro ao salvar sapo no arquivo!" << endl;
+	} else {
+		file << obj;
+	}
+
+	file.close();
+}
+
+void criarSapo(List<Sapo*> *s) {
+	string nome;
+
+	while(nomeExiste(s, nome, "do seu sapo")) cout << "Nome já existe. Tente outro nome!" << endl;
+
+	List<Sapo*>::iterator it = s->getEnd();
+	it--;
+	
+	Sapo *sapo = *it;
+	s->insertAtTail(new Sapo(nome, sapo->getId()+1, 0, 0, 0, 0));
+
+	it++;
+	salvarDado<Sapo>(*(*it), diretorioSapos);
+}
+
+void criarCorrida(List<Corrida*> *c) {
+	string nome, valor;
+	int tamanho = 0;
+
+	while(nomeExiste(c, nome, "da sua corrida")) cout << "Nome já existe. Tente outro nome!" << endl;
+
+	while((tamanho < TAMANHO_MINIMO_CORRIDA || tamanho > TAMANHO_MAXIMO_CORRIDA)) {
+		cout << "<><> Insira um valor entre 100 e 500 para o tamanho da sua corrida <><>" << endl;
+		getline(cin, valor);
+		stringstream(valor) >> tamanho;
+	}
+
+	List<Corrida*>::iterator it = c->getEnd();
+	it--;
+	
+	Corrida *corrida = *it;
+	c->insertAtTail(new Corrida(nome, corrida->getId()+1, tamanho));
+
+	it++;
+	salvarDado<Corrida>(*(*it), diretorioCorridas);
+}
+
 int main() {
 
+
 	List<Sapo*> *sapos = new List<Sapo*>();
+	carregarDados<Sapo*, Sapo>(sapos, diretorioSapos);
+
 
 	List<Corrida*> *corridas = new List<Corrida*>();
+	carregarDados<Corrida*, Corrida>(corridas, diretorioCorridas);
 
-	sapos->insertAtTail(new Sapo("Frog", 0, 0, 0, 0, 0));
-	sapos->insertAtTail(new Sapo("Frogette", 1, 0, 0, 0, 0));
+	//criarSapo(sapos);
 
+	criarCorrida(corridas);
+
+	for (List<Sapo*>::iterator it = sapos->getBegin(); it != sapos->getEnd(); it++) {
+		cout << *(*it) << endl;
+	}
+
+	/*
 	ofstream file;
 
 	file.open(diretorioSapos, std::ios::trunc);
@@ -77,6 +191,7 @@ int main() {
 			file << *(*it);
 		}
 	}
+	*/
 
 
 

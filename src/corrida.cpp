@@ -67,7 +67,7 @@ ofstream& operator<< (ofstream &of, const Corrida &_c) {
 	of << std::to_string(_c.id) << ';'
 	   << _c.nome << ';'
 	   << std::to_string(_c.id) << ';'
-	   << std::to_string(_c.tamanhoCircuito) << std::endl;
+	   << std::to_string(_c.tamanhoCircuito) << ';' << std::endl;
 
 	return of;
 
