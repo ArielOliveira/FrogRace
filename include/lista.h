@@ -17,6 +17,8 @@ class Iterator {
 		Iterator() {}
 		~Iterator() {}
 
+		T& getNode() {return ptr;}
+
 		inline Iterator& operator= (const Iterator<T, Y> &it) {
 			ptr = it.ptr;
 			return *this;
@@ -51,7 +53,6 @@ class Iterator {
 
 				return o;
 			}
-
 };
 
 template<typename T>
@@ -93,6 +94,7 @@ class List {
 		bool removeAtHead();
 		bool removeAtTail();
 		bool removeAt(int index);
+		bool removeMember(Node<T> *node);
 
 		int getSize();
 
@@ -190,6 +192,8 @@ bool List<T>::removeAtHead() {
 	tmp->next->previous = head;
 	delete tmp;
 
+	size--;
+
 	return true;
 }
 	
@@ -201,6 +205,8 @@ bool List<T>::removeAtTail() {
 	tail->previous = tmp->previous;
 	tmp->previous->next = tail;
 	delete tmp;
+
+	size--;
 
 	return true;
 }
@@ -216,6 +222,25 @@ bool List<T>::removeAt(int index) {
 	tmp->previous = sentry->previous;
 	tmp->previous->next = tmp;
 	delete sentry;
+
+	size--;
+
+	return true;
+}
+
+
+template <typename T>
+bool List<T>::removeMember(Node<T> *node) {
+	if (node == tail || node == head) return false;
+
+	Node<T> *sentry = node;
+
+	Node<T> *tmp = sentry->next;
+	tmp->previous = sentry->previous;
+	tmp->previous->next = tmp;
+	delete sentry;
+
+	size--;
 
 	return true;
 }

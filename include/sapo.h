@@ -45,7 +45,7 @@ class Sapo {
 		Sapo();
 		~Sapo();
 
-		void pular();
+		int pular();
 
 		void setNome(string nome);
 		string getNome();
@@ -53,6 +53,7 @@ class Sapo {
 		void setId(short int id);
 		int getId();
 
+		void incrementarVitoria();
 		int getVitorias();
 		int getEmpates();
 		int getPulosDadosTotal();

@@ -20,7 +20,7 @@ $(corridaSapo): CPPFLAGS += -I. -I./include/
 $(corridaSapo): $(objs)
 	$(CC) $^ $(CPPFLAGS) -o $@
 
-./build/main.o: ./src/main.cpp ./include/lista.h
+./build/main.o: ./src/main.cpp ./include/lista.h ./include/dataManager.h
 	$(CC) -c $(CPPFLAGS) $< -o $@
 
 ./build/sapo.o: ./src/sapo.cpp ./include/sapo.h
