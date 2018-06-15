@@ -85,8 +85,8 @@ int Sapo::pular() {
 	int pulo = round(dis(gen));
 
 	distanciaPercorrida += pulo;
-	pulosDados += 1;
-	pulosDadosTotal += 1;
+	pulosDados++;
+	pulosDadosTotal++;
 
 	return pulo;
 }

@@ -4,7 +4,7 @@
 *			sapos
 * @author	Ariel Oliveira (ariel.oliveira01@gmail.com)
 * @since	20/03/2018
- * @date	22/03/2017
+* @date		15/06/2018
 */
 
 #include <iostream>
@@ -30,9 +30,6 @@ enum Menu {
 int Sapo::distanciaCorrida = 0;
 
 bool venceu(Sapo *sapo) {
-	
-	sapo->pular();
-
 	return (sapo->getDistanciaPercorrida() >= Sapo::distanciaCorrida);
 }
 
@@ -45,16 +42,37 @@ void mostrarRanking(List<Sapo*> *vencedores) {
 
 void determinaVencedor(List<Sapo*> *s) {
 	List<Sapo*> *vencedores = new List<Sapo*>();
+	int pulo = 0, valor = 0;
+	bool pausar = true;
+
+	string dummy;
 	while(s->getSize()) {
 		for (List<Sapo*>::iterator it = s->getBegin(); it != s->getEnd(); it++) {
 			Sapo *sapo = *it;
 
+			pulo = sapo->pular();
+
+			cout << *sapo << endl;
+			cout << "Pulo atual: " << pulo << endl << endl;
+			cout << "Restam: " << Sapo::distanciaCorrida-sapo->getDistanciaPercorrida() << endl;
+
+			if (pausar) {
+				cout << "Pressione enter para ver o próximo pulo." << endl << "Digite 1 para o resultado." << endl << endl;
+				getline(cin, dummy);
+				stringstream(dummy) >> valor;
+
+				if (valor == 1) {pausar = false;}
+			}
+
 			if (venceu(sapo)) {
+				cout << sapo->getNome() << " cruzou a linha de chegada!" << endl;
 				vencedores->insertAtTail(sapo);
 				s->removeMember(it.getNode());
 			}
 		}
 	}
+
+	cout << vencedores->getData(1)->getNome() << " Venceu!" << endl;
 
 	vencedores->getData(1)->incrementarVitoria();
 	mostrarRanking(vencedores);
