@@ -17,6 +17,16 @@ using std::stringstream;
 
 #include "dataManager.h"
 
+enum Menu {
+	NULO,
+	SAPO_STATS,
+	CORRIDA_STATS,
+	INICIAR,
+	CRIAR_SAPO,
+	CRIAR_CORRIDA,
+	SAIR
+};
+
 int Sapo::distanciaCorrida = 0;
 
 bool venceu(Sapo *sapo) {
@@ -26,9 +36,15 @@ bool venceu(Sapo *sapo) {
 	return (sapo->getDistanciaPercorrida() >= Sapo::distanciaCorrida);
 }
 
-List<Sapo*>* determinaVencedor(List<Sapo*> *s) {
-	List<Sapo*> *vencedores = new List<Sapo*>();
+void mostrarRanking(List<Sapo*> *vencedores) {
+	cout << "<<><><><><><>> VENCEDORES <<><><><><><>>" << endl;
+	for (List<Sapo*>::iterator it = vencedores->getBegin(); it != vencedores->getEnd(); it++) {
+		cout << *(*it) << endl;
+	}
+}
 
+void determinaVencedor(List<Sapo*> *s) {
+	List<Sapo*> *vencedores = new List<Sapo*>();
 	while(s->getSize()) {
 		for (List<Sapo*>::iterator it = s->getBegin(); it != s->getEnd(); it++) {
 			Sapo *sapo = *it;
@@ -39,9 +55,13 @@ List<Sapo*>* determinaVencedor(List<Sapo*> *s) {
 			}
 		}
 	}
-	vencedores->getData(1)->incrementarVitoria();
 
-	return vencedores;
+	vencedores->getData(1)->incrementarVitoria();
+	mostrarRanking(vencedores);
+	atualizarDados<Sapo*>(vencedores, diretorioSapos);
+
+	delete vencedores;
+
 }
 
 void exibirSaposStats(List<Sapo*> *s) {
@@ -58,26 +78,25 @@ void exibirCorridasStats(List<Corrida*> *c) {
 
 int escolherCorrida(List<Corrida*> *c) {
 	List<Corrida*>::iterator it;
-	int i = 0;
+	int i = 1;
 
 	cout << "<><><> Escolha sua corrida <><><>" << endl;
 	for (it = c->getBegin(); it != c->getEnd(); it++) {
 		cout << i << " - " << *(*it) << endl;
 		i++;
 	}
-	i--;
 
 	int escolha = -1;
 	string valor = "";
 
-	while (escolha < 0 || escolha > i) {
+	while (escolha < 1 || escolha > c->getSize()) {
 		getline(cin, valor);
 		stringstream(valor) >> escolha;
 	}
 
 	i = 0;
 	Corrida *corrida;
-	for (it = c->getBegin(); (it != c->getEnd()) && (i != escolha); it++) {
+	for (it = c->getBegin(); (it != c->getEnd()) && (i != escolha-1); it++) {
 		i++;	
 	}
 	corrida = *it;
@@ -85,38 +104,59 @@ int escolherCorrida(List<Corrida*> *c) {
 	return corrida->getTamanhoCircuito();
 }
 
+void menu() {
+	cout << "><><><><> Menu da Corrida dos Sapos <><><><><" << endl;
+	cout << "1 - Ver Estatísticas dos Sapos" << endl;
+	cout << "2 - Ver Estatísticas das Corridas" << endl;
+	cout << "3 - Iniciar um corrida" << endl;
+	cout << "4 - Criar Sapo" << endl;
+	cout << "5 - Criar Corrida" << endl;
+	cout << "6 - Sair" << endl;
+}
+
 int main() {
 
 	List<Sapo*> *sapos = new List<Sapo*>();
-	carregarDados<Sapo*, Sapo>(sapos, diretorioSapos);
+	int proximoSapo = carregarDados<Sapo*, Sapo>(sapos, diretorioSapos);
 
 	List<Corrida*> *corridas = new List<Corrida*>();
-	carregarDados<Corrida*, Corrida>(corridas, diretorioCorridas);
+	int proximaCorrida = carregarDados<Corrida*, Corrida>(corridas, diretorioCorridas);
 
-	Sapo::distanciaCorrida = escolherCorrida(corridas);	
+	Menu m;
 
-	List<Sapo*> *vencedores = determinaVencedor(sapos);
+	do {
+		menu();
 
-	cout << "<<><><><><><>> VENCEDORES <<><><><><><>>" << endl;
-	for (List<Sapo*>::iterator it = vencedores->getBegin(); it != vencedores->getEnd(); it++) {
-		cout << *(*it) << endl;
-	}
+		string opcao = "";
+		int valor = 0;
 
-	atualizarDados<Sapo*>(vencedores, diretorioSapos);
+		getline(cin, opcao);
+		stringstream(opcao) >> valor;
 
-	/*
-	Sapo *sapo_1, *sapo_2, *sapo_3;
-	
-	
-	sapo_1 = new Sapo(1);
-	sapo_2 = new Sapo(2);
-	sapo_3 = new Sapo(3);
+		m = (Menu)valor;
 
-	Sapo *sapo_ptr = determinaVencedor(sapo_1, sapo_2, sapo_3);
+		switch(m) {
+			case SAPO_STATS: exibirSaposStats(sapos);
+				break;
+			case CORRIDA_STATS: exibirCorridasStats(corridas);
+				break;
+			case INICIAR: Sapo::distanciaCorrida = escolherCorrida(corridas);
+						  determinaVencedor(sapos);
+						  
+						  carregarDados<Sapo*, Sapo>(sapos, diretorioSapos);
+				break;
+			case CRIAR_SAPO: criarSapo(sapos, proximoSapo);
+				break;
+			case CRIAR_CORRIDA: criarCorrida(corridas, proximaCorrida);
+				break;
+			default:
+				break;
+		} 
 
-	cout << "O sapo " << sapo_ptr->getId() << " venceu com "
-		 << sapo_ptr->getPulosDados() <<" pulos, percorrendo " 
-		 << sapo_ptr->getDistanciaPercorrida() << endl;
-	*/
+	} while(m != SAIR);
+
+	delete sapos;
+	delete corridas;
+
 	return 0;
 }

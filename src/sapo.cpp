@@ -38,15 +38,25 @@ Sapo::Sapo(int line) {
 		file >> *this;
 	}
 
+	distanciaPercorrida = 0;
+	pulosDados = 0;
+
 	preloaded = true;
 
 	file.close();
 }
 
 Sapo::Sapo() {
+	nome = "";
+
 	id = 0;
 	distanciaPercorrida = 0;
 	pulosDados = 0;
+
+	vitorias = 0;
+	empates = 0;
+	pulosDadosTotal = 0;
+	provasDisputadas = 0;
 
 	preloaded = false;
 }
@@ -76,6 +86,7 @@ int Sapo::pular() {
 
 	distanciaPercorrida += pulo;
 	pulosDados += 1;
+	pulosDadosTotal += 1;
 
 	return pulo;
 }
@@ -120,6 +131,7 @@ int Sapo::pular() {
  	o << "Nome: " << _s.nome << std::endl
  	  << "Vitorias: " << _s.vitorias << std::endl
  	  << "Empates: " << _s.empates << std::endl
+ 	  << "Pulos Dados: " << _s.pulosDados << std::endl
  	  << "Pulos Totais: " << _s.pulosDadosTotal << std::endl
  	  << "Provas Disputadas: " << _s.provasDisputadas << std::endl;
 

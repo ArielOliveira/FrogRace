@@ -100,7 +100,7 @@ class List {
 
 		T getData(int index);
 
-		void deleteList();
+		void clear();
 };
 
 template <typename T>
@@ -115,7 +115,10 @@ List<T>::List() {
 	
 template <typename T>		
 List<T>::~List() {
-	deleteList();
+	clear();
+
+	delete head;
+	delete tail;
 }
 
 template <typename T>
@@ -251,25 +254,27 @@ int List<T>::getSize() {return size;}
 template <typename T>
 T List<T>::getData(int index) {
 	Node<T> *sentry;
-	if (index <= size || index > 0) {
+	if (index <= size && index > 0) {
 		findNode(index, sentry);
 		return sentry->data;
 	} else {
 		std::cout << "Impossível encontrar elemento. Posição fora da lista" << std::endl;
 	}
 
-	return sentry->data = 0;
+	return sentry->data;
 }
 	
 template <typename T>
-void List<T>::deleteList() {
+void List<T>::clear() {
 	Node<T> *sentry = head->next;
-	while (sentry->next) {
-		sentry = sentry->next;
+
+	while ((sentry = sentry->next) && size) {
 		delete sentry->previous;
+		size--;
 	}
-	delete head;
-	delete tail;
+
+	head->next = tail;
+	tail->previous = head;
 }
 	
 template <typename T>

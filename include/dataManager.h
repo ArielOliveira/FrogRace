@@ -43,16 +43,19 @@ void atualizarDados(List<T> *l, const char *c) {
 }
 
 template <typename T, typename Y>
-void carregarDados(List<T> *l, const char *c) {
+int carregarDados(List<T> *l, const char *c) {
 	ifstream file;
 	file.open(c);
+
+	string dummy;
+	int linhas;
 
 	if (!file) {
 		cout << "Erro ao abrir arquivo!" << endl;
 	} else {
 		resetStreamCursor(file);
-		string dummy = "";
-		int linhas = 0;
+		linhas = 0;
+		dummy = "";
 		while(getline(file, dummy, '\n')) {linhas++;}
 
 		for (int i = 0; i < linhas; i++) {
@@ -60,6 +63,8 @@ void carregarDados(List<T> *l, const char *c) {
 		}
 	}
 	file.close();
+
+	return linhas+1;
 }
 
 template <typename T>
@@ -76,26 +81,18 @@ void salvarDado(T obj, const char *c) {
 	file.close();
 }
 
-void criarSapo(List<Sapo*> *s) {
+void criarSapo(List<Sapo*> *s, int &id) {
 	string nome;
 
 	while(nomeExiste(s, nome, "do seu sapo")) cout << "Nome já existe. Tente outro nome!" << endl;
 
-	if (s->getSize() > 0) {
-		List<Sapo*>::iterator it = s->getEnd();
-		it--;
-		Sapo *sapo = *it;
-		s->insertAtTail(new Sapo(nome, sapo->getId()+1, 0, 0, 0, 0));
-		it++;
-		salvarDado<Sapo>(*(*it), diretorioSapos);
-	} else {
-		s->insertAtTail(new Sapo(nome, 0, 0, 0, 0, 0));
-		salvarDado<Sapo>(*s->getData(1), diretorioSapos);
-	}
+	s->insertAtTail(new Sapo(nome, id, 0, 0, 0, 0));
+	salvarDado<Sapo>(*s->getData(s->getSize()), diretorioSapos);
 }
 
-void criarCorrida(List<Corrida*> *c) {
+void criarCorrida(List<Corrida*> *c, int &id) {
 	string nome, valor;
+
 	int tamanho = 0;
 
 	while(nomeExiste(c, nome, "da sua corrida")) cout << "Nome já existe. Tente outro nome!" << endl;
@@ -106,17 +103,8 @@ void criarCorrida(List<Corrida*> *c) {
 		stringstream(valor) >> tamanho;
 	}
 
-	if (c->getSize() > 0) {
-		List<Corrida*>::iterator it = c->getEnd();
-		it--;	
-		Corrida *corrida = *it;
-		c->insertAtTail(new Corrida(nome, corrida->getId()+1, tamanho));
-		it++;
-		salvarDado<Corrida>(*(*it), diretorioCorridas);
-	} else {
-		c->insertAtTail(new Corrida(nome, 0, tamanho));
-		salvarDado<Corrida>(*c->getData(1), diretorioCorridas);
-	}
+	c->insertAtTail(new Corrida(nome, id, tamanho));
+	salvarDado<Corrida>(*c->getData(c->getSize()), diretorioCorridas);
 }
 
 #endif
