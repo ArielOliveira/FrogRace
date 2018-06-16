@@ -1,4 +1,4 @@
-corridaSapo = ./bin/corridaSapo
+FrogRace = ./bin/FrogRace
 
 INC_DIR = ./include
 SRC_DIR = ./src
@@ -14,10 +14,10 @@ CPPFLAGS = -Wall -pedantic -ansi -std=c++11
 
 objs = ./build/main.o ./build/sapo.o ./build/corrida.o ./build/fileHandler.o
 
-corridaSapo: $(corridaSapo)
+FrogRace: $(FrogRace)
 
-$(corridaSapo): CPPFLAGS += -I. -I./include/
-$(corridaSapo): $(objs)
+$(FrogRace): CPPFLAGS += -I. -I./include/
+$(FrogRace): $(objs)
 	$(CC) $^ $(CPPFLAGS) -o $@
 
 ./build/main.o: ./src/main.cpp ./include/lista.h ./include/dataManager.h
@@ -33,7 +33,7 @@ $(corridaSapo): $(objs)
 	$(CC) -c $(CPPFLAGS) $< -o $@	
 
 debug: CPPFLAGS += -g -O0
-debug: acervo
+debug: FrogRace
 
 dir:
 	mkdir -p bin

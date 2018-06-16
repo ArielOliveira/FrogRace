@@ -1,3 +1,12 @@
+/**
+* @file 	fileHandler.cpp
+* @brief 	Responsável por manipular os arquivos CSV.
+* @brief	Contém a implementaçao das funçoes.
+* @author	Ariel Oliveira (ariel.oliveira01@gmail.com)
+* @since	20/03/2018
+* @date		16/06/2018
+*/
+
 #include "fileHandler.h"
 
 void readCSVFile(ifstream &file, int line) {

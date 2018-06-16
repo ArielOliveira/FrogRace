@@ -72,6 +72,8 @@ int Sapo::getId() {return id;}
 
 
 void Sapo::incrementarVitoria() {vitorias++;}
+void Sapo::incrementarProvasDisputadas() {provasDisputadas++;}
+
 int Sapo::getVitorias() {return vitorias;}
 int Sapo::getEmpates() {return empates;}
 int Sapo::getPulosDadosTotal() {return pulosDadosTotal;}

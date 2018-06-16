@@ -4,7 +4,7 @@
 *			sapos
 * @author	Ariel Oliveira (ariel.oliveira01@gmail.com)
 * @since	20/03/2018
-* @date		15/06/2018
+* @date		16/06/2018
 */
 
 #include <iostream>
@@ -17,6 +17,9 @@ using std::stringstream;
 
 #include "dataManager.h"
 
+/** Enum Menu 
+*   Uma enumeração com as opções do menu principal.
+*/
 enum Menu {
 	NULO,
 	SAPO_STATS,
@@ -29,23 +32,80 @@ enum Menu {
 
 int Sapo::distanciaCorrida = 0;
 
+/** 
+* @brief Verifica se o sapo passou a linha de chegada
+* @param *sapo Objeto da classe Sapo
+* @return true Caso o sapo tenha ganhado
+*/
 bool venceu(Sapo *sapo) {
 	return (sapo->getDistanciaPercorrida() >= Sapo::distanciaCorrida);
 }
 
-void mostrarRanking(List<Sapo*> *vencedores) {
-	cout << "<<><><><><><>> VENCEDORES <<><><><><><>>" << endl;
-	for (List<Sapo*>::iterator it = vencedores->getBegin(); it != vencedores->getEnd(); it++) {
+/** 
+* @brief Verifica se o sapo s1 e s2 estão em condição de empate
+* @param *s1 Objeto da classe Sapo
+* @param *s2 Objeto da classe Sapo
+* @return true Se os sapos estiverem na condição tratada
+*/
+bool empatou(Sapo *s1, Sapo *s2) {
+	return (s1->getDistanciaPercorrida() == s2->getDistanciaPercorrida() && s1->getPulosDados() == s2->getPulosDados());
+}
+
+
+/** 
+* @brief Mostra o ranking dos sapos na ordem de chegada
+* @param *finalistas Objeto de uma TAD List
+* @return void
+*/
+void mostrarRanking(List<Sapo*> *finalistas) {
+	cout << "<<><><><><><>> Ranking <<><><><><><>>" << endl;
+	for (List<Sapo*>::iterator it = finalistas->getBegin(); it != finalistas->getEnd(); it++) {
 		cout << *(*it) << endl;
 	}
 }
 
-void determinaVencedor(List<Sapo*> *s) {
-	List<Sapo*> *vencedores = new List<Sapo*>();
+/** 
+* @brief Mostra a lista de sapos carregados no programa
+* @param *s Objeto de uma TAD List
+* @return void
+*/
+void exibirSaposStats(List<Sapo*> *s) {
+	for (List<Sapo*>::iterator it = s->getBegin(); it != s->getEnd(); it++) {
+		cout << *(*it) << endl;
+	}
+}
+
+/** 
+* @brief Mostra a lista de corridas carregadas no programa
+* @param *c Objeto de uma TAD List
+* @return void
+*/
+void exibirCorridasStats(List<Corrida*> *c) {
+	for (List<Corrida*>::iterator it = c->getBegin(); it != c->getEnd(); it++) {
+		cout << *(*it) << endl;
+	}
+}
+
+/** 
+* @brief Executa a corrida propriamente dita, determinando
+		 o sapo vencedor.
+* @param *s Objeto de uma TAD List contendo os sapos a competir
+* @return void
+*/
+void determinarVencedor(List<Sapo*> *s) {
+	string dummy;
+
+	cout << "<><><><><>> Participantes <<><><><>>" << endl;
+	exibirSaposStats(s);
+	cout << "Enter para Iniciar a Corrida" << endl;
+	getline(cin, dummy);
+
+	dummy = "";
+
+	List<Sapo*> *finalistas = new List<Sapo*>();
 	int pulo = 0, valor = 0;
 	bool pausar = true;
 
-	string dummy;
 	while(s->getSize()) {
 		for (List<Sapo*>::iterator it = s->getBegin(); it != s->getEnd(); it++) {
 			Sapo *sapo = *it;
@@ -66,34 +126,29 @@ void determinaVencedor(List<Sapo*> *s) {
 
 			if (venceu(sapo)) {
 				cout << sapo->getNome() << " cruzou a linha de chegada!" << endl;
-				vencedores->insertAtTail(sapo);
+				sapo->incrementarProvasDisputadas();
+				finalistas->insertAtTail(sapo);
 				s->removeMember(it.getNode());
+
 			}
 		}
 	}
 
-	cout << vencedores->getData(1)->getNome() << " Venceu!" << endl;
+	cout << finalistas->getData(1)->getNome() << " Venceu!" << endl;
 
-	vencedores->getData(1)->incrementarVitoria();
-	mostrarRanking(vencedores);
-	atualizarDados<Sapo*>(vencedores, diretorioSapos);
+	finalistas->getData(1)->incrementarVitoria();
+	mostrarRanking(finalistas);
+	atualizarDados<Sapo*>(finalistas, diretorioSapos);
 
-	delete vencedores;
+	delete finalistas;
 
 }
 
-void exibirSaposStats(List<Sapo*> *s) {
-	for (List<Sapo*>::iterator it = s->getBegin(); it != s->getEnd(); it++) {
-		cout << *(*it) << endl;
-	}
-}
-
-void exibirCorridasStats(List<Corrida*> *c) {
-	for (List<Corrida*>::iterator it = c->getBegin(); it != c->getEnd(); it++) {
-		cout << *(*it) << endl;
-	}
-}
-
+/** 
+* @brief Mostra um menu de escolha das corridas para o usuário
+* @param *  Objeto de uma TAD List contendo as corridas
+* @return int Opção escolhida pelo usuário
+*/
 int escolherCorrida(List<Corrida*> *c) {
 	List<Corrida*>::iterator it;
 	int i = 1;
@@ -122,6 +177,10 @@ int escolherCorrida(List<Corrida*> *c) {
 	return corrida->getTamanhoCircuito();
 }
 
+/** 
+* @brief Exibe o menu principal do programa
+* @return int Opção escolhida pelo usuário
+*/
 void menu() {
 	cout << "><><><><> Menu da Corrida dos Sapos <><><><><" << endl;
 	cout << "1 - Ver Estatísticas dos Sapos" << endl;
@@ -159,7 +218,7 @@ int main() {
 			case CORRIDA_STATS: exibirCorridasStats(corridas);
 				break;
 			case INICIAR: Sapo::distanciaCorrida = escolherCorrida(corridas);
-						  determinaVencedor(sapos);
+						  determinarVencedor(sapos);
 						  
 						  carregarDados<Sapo*, Sapo>(sapos, diretorioSapos);
 				break;
