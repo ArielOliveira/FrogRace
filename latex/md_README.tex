@@ -1,0 +1,56 @@
+\begin{quote}
+Frog\+Race \end{quote}
+
+
+Este repositório contém\+:
+
+
+\begin{DoxyEnumerate}
+\item Informações sobre a configuração
+\item Instruções de compilação
+\item Instruções de execução
+\item Informações sobre localização dos códigos que serão avaliados
+\end{DoxyEnumerate}
+
+\subsection*{Tabela de Conteúdos}
+
+
+\begin{DoxyItemize}
+\item \href{#configuração}{\tt Configuração}
+\item \href{#compilação}{\tt Compilação}
+\item \href{#execução}{\tt Execução}
+\item \href{#códigos-avaliados}{\tt Códigos Avaliados}
+\begin{DoxyItemize}
+\item \href{#passos-1-2}{\tt Passos 1, 2}
+\item \href{#passos-3-4-5}{\tt Passos 3, 4 e 5}
+\item \href{#passo-6}{\tt Passo 6}
+\end{DoxyItemize}
+\end{DoxyItemize}
+
+\subsection*{Configuração}
+
+Para o desenvolvimento deste projeto foi utilizado apenas as bibliotecas padrão do c++, $<$iostream$>$, $<$string$>$, $<$random$>$, $<$fstream$>$, $<$istream$>$ e $<$ostream$>$. Com excessão da T\+AD Lista utilizada, que foi implementada anteriormente e depois incluída no projeto com seu respectivo Iterador.
+
+\subsection*{Compilação}
+
+Para compilar o programa é necessário que existam as demais pastas do projeto. Caso elas não existam, execute o comando \textquotesingle{}make dir\textquotesingle{} a partir da pasta raíz do projeto. Também é necessária a existência dos arquivos corridas.\+csv e sapos.\+csv dentro da pasta data. Finalmente, basta compilar o programa executando o comando \textquotesingle{}make\textquotesingle{} ou \textquotesingle{}make Frog\+Race\textquotesingle{}.
+
+\subsection*{Execução}
+
+O programa ficará localizado na pasta bin. Para executá-\/lo a partir da pasta raíz do projeto, execute o comando \textquotesingle{}./bin/\+Frog\+Race\textquotesingle{}.
+
+\subsection*{Códigos Avaliados}
+
+Os passos 1, 2 e 6 estão localizados no arquivo \hyperlink{dataManager_8h}{data\+Manager.\+h}. Os passos 3, 4, 5 estão localizados ni arquivo \hyperlink{main_8cpp}{main.\+cpp}.
+
+\subsection*{Passos 1, 2}
+
+Linhas 76-\/79. Função que funciona para ambas classes \hyperlink{classSapo}{Sapo} e \hyperlink{classCorrida}{Corrida}.
+
+\subsection*{Passos 3, 4 e 5}
+
+Passo 3\+: Linhas 184-\/192 Descrevem a função que exibe o menu na tela. Linhas 204-\/233 Contém o loop lógico do menu principal. Passo 4\+: Linhas 152-\/168 Descrevem a função que retorna a escolha da corrida. Passo 5\+: Linhas 95-\/135 Descrevem a função que determina a lógica da corrida propriamente dita.
+
+\subsection*{Passo 6}
+
+Criar o \hyperlink{classSapo}{Sapo}\+: Linhas 128-\/137. Criar a \hyperlink{classCorrida}{Corrida}\+: Linhas 146-\/163. Salvar \hyperlink{classSapo}{Sapo}\+: Linhas 108-\/119. 

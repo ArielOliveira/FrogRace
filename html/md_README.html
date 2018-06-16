@@ -1,0 +1,126 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.11"/>
+<title>FrogRace: FrogRace</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">FrogRace
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.8.11 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Localizar');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Página&#160;principal</span></a></li>
+      <li class="current"><a href="pages.html"><span>Páginas&#160;relacionadas</span></a></li>
+      <li><a href="annotated.html"><span>Classes</span></a></li>
+      <li><a href="files.html"><span>Ficheiros</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Localizar" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">FrogRace </div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><blockquote class="doxtable">
+<p>FrogRace </p>
+</blockquote>
+<p>Este repositório contém:</p>
+<ol type="1">
+<li>Informações sobre a configuração</li>
+<li>Instruções de compilação</li>
+<li>Instruções de execução</li>
+<li>Informações sobre localização dos códigos que serão avaliados</li>
+</ol>
+<h2>Tabela de Conteúdos</h2>
+<ul>
+<li><a href="#configuração">Configuração</a></li>
+<li><a href="#compilação">Compilação</a></li>
+<li><a href="#execução">Execução</a></li>
+<li><a href="#códigos-avaliados">Códigos Avaliados</a><ul>
+<li><a href="#passos-1-2">Passos 1, 2</a></li>
+<li><a href="#passos-3-4-5">Passos 3, 4 e 5</a></li>
+<li><a href="#passo-6">Passo 6</a></li>
+</ul>
+</li>
+</ul>
+<h2>Configuração</h2>
+<p>Para o desenvolvimento deste projeto foi utilizado apenas as bibliotecas padrão do c++, &lt;iostream&gt;, &lt;string&gt;, &lt;random&gt;, &lt;fstream&gt;, &lt;istream&gt; e &lt;ostream&gt;. Com excessão da TAD Lista utilizada, que foi implementada anteriormente e depois incluída no projeto com seu respectivo Iterador.</p>
+<h2>Compilação</h2>
+<p>Para compilar o programa é necessário que existam as demais pastas do projeto. Caso elas não existam, execute o comando 'make dir' a partir da pasta raíz do projeto. Também é necessária a existência dos arquivos corridas.csv e sapos.csv dentro da pasta data. Finalmente, basta compilar o programa executando o comando 'make' ou 'make FrogRace'.</p>
+<h2>Execução</h2>
+<p>O programa ficará localizado na pasta bin. Para executá-lo a partir da pasta raíz do projeto, execute o comando './bin/FrogRace'.</p>
+<h2>Códigos Avaliados</h2>
+<p>Os passos 1, 2 e 6 estão localizados no arquivo <a class="el" href="dataManager_8h.html" title="Responsável por carregar e salvar as informaçoes das classes em arquivo. ">dataManager.h</a>. Os passos 3, 4, 5 estão localizados ni arquivo <a class="el" href="main_8cpp.html" title="Programa que simula uma corrida de sapos. ">main.cpp</a>.</p>
+<h2>Passos 1, 2</h2>
+<p>Linhas 76-79. Função que funciona para ambas classes <a class="el" href="classSapo.html" title="Classe que representa um Sapo. ">Sapo</a> e <a class="el" href="classCorrida.html">Corrida</a>.</p>
+<h2>Passos 3, 4 e 5</h2>
+<p>Passo 3: Linhas 184-192 Descrevem a função que exibe o menu na tela. Linhas 204-233 Contém o loop lógico do menu principal. Passo 4: Linhas 152-168 Descrevem a função que retorna a escolha da corrida. Passo 5: Linhas 95-135 Descrevem a função que determina a lógica da corrida propriamente dita.</p>
+<h2>Passo 6</h2>
+<p>Criar o <a class="el" href="classSapo.html" title="Classe que representa um Sapo. ">Sapo</a>: Linhas 128-137. Criar a <a class="el" href="classCorrida.html">Corrida</a>: Linhas 146-163. Salvar <a class="el" href="classSapo.html" title="Classe que representa um Sapo. ">Sapo</a>: Linhas 108-119. </p>
+</div></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Gerado por &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.11
+</small></address>
+</body>
+</html>

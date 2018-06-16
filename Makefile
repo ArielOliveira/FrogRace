@@ -12,7 +12,10 @@ CC = g++
 
 CPPFLAGS = -Wall -pedantic -ansi -std=c++11
 
+
 objs = ./build/main.o ./build/sapo.o ./build/corrida.o ./build/fileHandler.o
+
+.PHONY: dir doxy clean
 
 FrogRace: $(FrogRace)
 
@@ -34,6 +37,11 @@ $(FrogRace): $(objs)
 
 debug: CPPFLAGS += -g -O0
 debug: FrogRace
+
+doxy:
+	$(RM) $(DOC_DIR)/*
+	doxygen Doxyfile
+
 
 dir:
 	mkdir -p bin

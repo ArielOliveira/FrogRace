@@ -1,0 +1,226 @@
+\hypertarget{main_8cpp}{}\section{Referência ao ficheiro src/main.cpp}
+\label{main_8cpp}\index{src/main.\+cpp@{src/main.\+cpp}}
+
+
+Programa que simula uma corrida de sapos.  
+
+
+{\ttfamily \#include $<$iostream$>$}\\*
+{\ttfamily \#include $<$sstream$>$}\\*
+{\ttfamily \#include \char`\"{}data\+Manager.\+h\char`\"{}}\\*
+Diagrama de dependências de inclusão para main.\+cpp\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{main_8cpp__incl}
+\end{center}
+\end{figure}
+\subsection*{Enumerações}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{main_8cpp_af3d52afbb0d088f62e02208b24a9cbd2}{Menu} \{ \\*
+{\bfseries N\+U\+LO}, 
+{\bfseries S\+A\+P\+O\+\_\+\+S\+T\+A\+TS}, 
+{\bfseries C\+O\+R\+R\+I\+D\+A\+\_\+\+S\+T\+A\+TS}, 
+{\bfseries I\+N\+I\+C\+I\+AR}, 
+\\*
+{\bfseries C\+R\+I\+A\+R\+\_\+\+S\+A\+PO}, 
+{\bfseries C\+R\+I\+A\+R\+\_\+\+C\+O\+R\+R\+I\+DA}, 
+{\bfseries S\+A\+IR}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Funções}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{main_8cpp_ac9da77b344fdfbf80e44ac41e5eee7b1}{venceu} (\hyperlink{classSapo}{Sapo} $\ast$sapo)
+\begin{DoxyCompactList}\small\item\em Verifica se o sapo passou a linha de chegada. \end{DoxyCompactList}\item 
+bool \hyperlink{main_8cpp_a453c6d4383f08d8b257d58404342d5a4}{empatou} (\hyperlink{classSapo}{Sapo} $\ast$s1, \hyperlink{classSapo}{Sapo} $\ast$s2)
+\begin{DoxyCompactList}\small\item\em Verifica se o sapo s1 e s2 estão em condição de empate. \end{DoxyCompactList}\item 
+void \hyperlink{main_8cpp_a215a710d0178dcac06cfd5f1ebaa272e}{mostrar\+Ranking} (\hyperlink{classList}{List}$<$ \hyperlink{classSapo}{Sapo} $\ast$ $>$ $\ast$finalistas)
+\begin{DoxyCompactList}\small\item\em Mostra o ranking dos sapos na ordem de chegada. \end{DoxyCompactList}\item 
+void \hyperlink{main_8cpp_a0de112b9364672d94de3e2475e8a7480}{exibir\+Sapos\+Stats} (\hyperlink{classList}{List}$<$ \hyperlink{classSapo}{Sapo} $\ast$ $>$ $\ast$s)
+\begin{DoxyCompactList}\small\item\em Mostra a lista de sapos carregados no programa. \end{DoxyCompactList}\item 
+void \hyperlink{main_8cpp_af69f7dd90750aa96d2ce8d503a6a6a7c}{exibir\+Corridas\+Stats} (\hyperlink{classList}{List}$<$ \hyperlink{classCorrida}{Corrida} $\ast$ $>$ $\ast$c)
+\begin{DoxyCompactList}\small\item\em Mostra a lista de corridas carregadas no programa. \end{DoxyCompactList}\item 
+void \hyperlink{main_8cpp_a7e9505121fc1732c838abc02e34dfd23}{determinar\+Vencedor} (\hyperlink{classList}{List}$<$ \hyperlink{classSapo}{Sapo} $\ast$ $>$ $\ast$s)
+\begin{DoxyCompactList}\small\item\em Executa a corrida propriamente dita, determinando o sapo vencedor. \end{DoxyCompactList}\item 
+int \hyperlink{main_8cpp_a2510281af08509eb98249bbe7d75af91}{escolher\+Corrida} (\hyperlink{classList}{List}$<$ \hyperlink{classCorrida}{Corrida} $\ast$ $>$ $\ast$c)
+\begin{DoxyCompactList}\small\item\em Mostra um menu de escolha das corridas para o usuário. \end{DoxyCompactList}\item 
+void \hyperlink{main_8cpp_a2a0e843767aeea4f433a28b9c54f573a}{menu} ()
+\begin{DoxyCompactList}\small\item\em Exibe o menu principal do programa. \end{DoxyCompactList}\item 
+int {\bfseries main} ()\hypertarget{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{}\label{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Descrição detalhada}
+Programa que simula uma corrida de sapos. 
+
+\begin{DoxyAuthor}{Autor}
+Ariel Oliveira (\href{mailto:ariel.oliveira01@gmail.com}{\tt ariel.\+oliveira01@gmail.\+com}) 
+\end{DoxyAuthor}
+\begin{DoxySince}{Desde}
+20/03/2018 
+\end{DoxySince}
+\begin{DoxyDate}{Data}
+16/06/2018 
+\end{DoxyDate}
+
+
+\subsection{Documentação dos valores da enumeração}
+\index{main.\+cpp@{main.\+cpp}!Menu@{Menu}}
+\index{Menu@{Menu}!main.\+cpp@{main.\+cpp}}
+\subsubsection[{\texorpdfstring{Menu}{Menu}}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf Menu}}\hypertarget{main_8cpp_af3d52afbb0d088f62e02208b24a9cbd2}{}\label{main_8cpp_af3d52afbb0d088f62e02208b24a9cbd2}
+Enum Menu Uma enumeração com as opções do menu principal. 
+
+\subsection{Documentação das funções}
+\index{main.\+cpp@{main.\+cpp}!determinar\+Vencedor@{determinar\+Vencedor}}
+\index{determinar\+Vencedor@{determinar\+Vencedor}!main.\+cpp@{main.\+cpp}}
+\subsubsection[{\texorpdfstring{determinar\+Vencedor(\+List$<$ Sapo $\ast$ $>$ $\ast$s)}{determinarVencedor(List< Sapo * > *s)}}]{\setlength{\rightskip}{0pt plus 5cm}void determinar\+Vencedor (
+\begin{DoxyParamCaption}
+\item[{{\bf List}$<$ {\bf Sapo} $\ast$ $>$ $\ast$}]{s}
+\end{DoxyParamCaption}
+)}\hypertarget{main_8cpp_a7e9505121fc1732c838abc02e34dfd23}{}\label{main_8cpp_a7e9505121fc1732c838abc02e34dfd23}
+
+
+Executa a corrida propriamente dita, determinando o sapo vencedor. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em $\ast$s} & Objeto de uma T\+AD \hyperlink{classList}{List} contendo os sapos a competir \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+void 
+\end{DoxyReturn}
+\index{main.\+cpp@{main.\+cpp}!empatou@{empatou}}
+\index{empatou@{empatou}!main.\+cpp@{main.\+cpp}}
+\subsubsection[{\texorpdfstring{empatou(\+Sapo $\ast$s1, Sapo $\ast$s2)}{empatou(Sapo *s1, Sapo *s2)}}]{\setlength{\rightskip}{0pt plus 5cm}bool empatou (
+\begin{DoxyParamCaption}
+\item[{{\bf Sapo} $\ast$}]{s1, }
+\item[{{\bf Sapo} $\ast$}]{s2}
+\end{DoxyParamCaption}
+)}\hypertarget{main_8cpp_a453c6d4383f08d8b257d58404342d5a4}{}\label{main_8cpp_a453c6d4383f08d8b257d58404342d5a4}
+
+
+Verifica se o sapo s1 e s2 estão em condição de empate. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em $\ast$s1} & Objeto da classe \hyperlink{classSapo}{Sapo} \\
+\hline
+{\em $\ast$s2} & Objeto da classe \hyperlink{classSapo}{Sapo} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+true Se os sapos estiverem na condição tratada 
+\end{DoxyReturn}
+\index{main.\+cpp@{main.\+cpp}!escolher\+Corrida@{escolher\+Corrida}}
+\index{escolher\+Corrida@{escolher\+Corrida}!main.\+cpp@{main.\+cpp}}
+\subsubsection[{\texorpdfstring{escolher\+Corrida(\+List$<$ Corrida $\ast$ $>$ $\ast$c)}{escolherCorrida(List< Corrida * > *c)}}]{\setlength{\rightskip}{0pt plus 5cm}int escolher\+Corrida (
+\begin{DoxyParamCaption}
+\item[{{\bf List}$<$ {\bf Corrida} $\ast$ $>$ $\ast$}]{c}
+\end{DoxyParamCaption}
+)}\hypertarget{main_8cpp_a2510281af08509eb98249bbe7d75af91}{}\label{main_8cpp_a2510281af08509eb98249bbe7d75af91}
+
+
+Mostra um menu de escolha das corridas para o usuário. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em $\ast$} & Objeto de uma T\+AD \hyperlink{classList}{List} contendo as corridas \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+int Opção escolhida pelo usuário 
+\end{DoxyReturn}
+\index{main.\+cpp@{main.\+cpp}!exibir\+Corridas\+Stats@{exibir\+Corridas\+Stats}}
+\index{exibir\+Corridas\+Stats@{exibir\+Corridas\+Stats}!main.\+cpp@{main.\+cpp}}
+\subsubsection[{\texorpdfstring{exibir\+Corridas\+Stats(\+List$<$ Corrida $\ast$ $>$ $\ast$c)}{exibirCorridasStats(List< Corrida * > *c)}}]{\setlength{\rightskip}{0pt plus 5cm}void exibir\+Corridas\+Stats (
+\begin{DoxyParamCaption}
+\item[{{\bf List}$<$ {\bf Corrida} $\ast$ $>$ $\ast$}]{c}
+\end{DoxyParamCaption}
+)}\hypertarget{main_8cpp_af69f7dd90750aa96d2ce8d503a6a6a7c}{}\label{main_8cpp_af69f7dd90750aa96d2ce8d503a6a6a7c}
+
+
+Mostra a lista de corridas carregadas no programa. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em $\ast$c} & Objeto de uma T\+AD \hyperlink{classList}{List} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+void 
+\end{DoxyReturn}
+\index{main.\+cpp@{main.\+cpp}!exibir\+Sapos\+Stats@{exibir\+Sapos\+Stats}}
+\index{exibir\+Sapos\+Stats@{exibir\+Sapos\+Stats}!main.\+cpp@{main.\+cpp}}
+\subsubsection[{\texorpdfstring{exibir\+Sapos\+Stats(\+List$<$ Sapo $\ast$ $>$ $\ast$s)}{exibirSaposStats(List< Sapo * > *s)}}]{\setlength{\rightskip}{0pt plus 5cm}void exibir\+Sapos\+Stats (
+\begin{DoxyParamCaption}
+\item[{{\bf List}$<$ {\bf Sapo} $\ast$ $>$ $\ast$}]{s}
+\end{DoxyParamCaption}
+)}\hypertarget{main_8cpp_a0de112b9364672d94de3e2475e8a7480}{}\label{main_8cpp_a0de112b9364672d94de3e2475e8a7480}
+
+
+Mostra a lista de sapos carregados no programa. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em $\ast$s} & Objeto de uma T\+AD \hyperlink{classList}{List} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+void 
+\end{DoxyReturn}
+\index{main.\+cpp@{main.\+cpp}!menu@{menu}}
+\index{menu@{menu}!main.\+cpp@{main.\+cpp}}
+\subsubsection[{\texorpdfstring{menu()}{menu()}}]{\setlength{\rightskip}{0pt plus 5cm}void menu (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{main_8cpp_a2a0e843767aeea4f433a28b9c54f573a}{}\label{main_8cpp_a2a0e843767aeea4f433a28b9c54f573a}
+
+
+Exibe o menu principal do programa. 
+
+\begin{DoxyReturn}{Retorna}
+int Opção escolhida pelo usuário 
+\end{DoxyReturn}
+\index{main.\+cpp@{main.\+cpp}!mostrar\+Ranking@{mostrar\+Ranking}}
+\index{mostrar\+Ranking@{mostrar\+Ranking}!main.\+cpp@{main.\+cpp}}
+\subsubsection[{\texorpdfstring{mostrar\+Ranking(\+List$<$ Sapo $\ast$ $>$ $\ast$finalistas)}{mostrarRanking(List< Sapo * > *finalistas)}}]{\setlength{\rightskip}{0pt plus 5cm}void mostrar\+Ranking (
+\begin{DoxyParamCaption}
+\item[{{\bf List}$<$ {\bf Sapo} $\ast$ $>$ $\ast$}]{finalistas}
+\end{DoxyParamCaption}
+)}\hypertarget{main_8cpp_a215a710d0178dcac06cfd5f1ebaa272e}{}\label{main_8cpp_a215a710d0178dcac06cfd5f1ebaa272e}
+
+
+Mostra o ranking dos sapos na ordem de chegada. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em $\ast$finalistas} & Objeto de uma T\+AD \hyperlink{classList}{List} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+void 
+\end{DoxyReturn}
+\index{main.\+cpp@{main.\+cpp}!venceu@{venceu}}
+\index{venceu@{venceu}!main.\+cpp@{main.\+cpp}}
+\subsubsection[{\texorpdfstring{venceu(\+Sapo $\ast$sapo)}{venceu(Sapo *sapo)}}]{\setlength{\rightskip}{0pt plus 5cm}bool venceu (
+\begin{DoxyParamCaption}
+\item[{{\bf Sapo} $\ast$}]{sapo}
+\end{DoxyParamCaption}
+)}\hypertarget{main_8cpp_ac9da77b344fdfbf80e44ac41e5eee7b1}{}\label{main_8cpp_ac9da77b344fdfbf80e44ac41e5eee7b1}
+
+
+Verifica se o sapo passou a linha de chegada. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em $\ast$sapo} & Objeto da classe \hyperlink{classSapo}{Sapo} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+true Caso o sapo tenha ganhado 
+\end{DoxyReturn}

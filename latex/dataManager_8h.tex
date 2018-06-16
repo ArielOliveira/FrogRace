@@ -1,0 +1,201 @@
+\hypertarget{dataManager_8h}{}\section{Referência ao ficheiro include/data\+Manager.h}
+\label{dataManager_8h}\index{include/data\+Manager.\+h@{include/data\+Manager.\+h}}
+
+
+Responsável por carregar e salvar as informaçoes das classes em arquivo.  
+
+
+{\ttfamily \#include \char`\"{}file\+Handler.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}lista.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}sapo.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}corrida.\+h\char`\"{}}\\*
+Diagrama de dependências de inclusão para data\+Manager.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{dataManager_8h__incl}
+\end{center}
+\end{figure}
+Este grafo mostra quais são os ficheiros que incluem directamente ou indirectamente este ficheiro\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=195pt]{dataManager_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define {\bfseries T\+A\+M\+A\+N\+H\+O\+\_\+\+M\+I\+N\+I\+M\+O\+\_\+\+C\+O\+R\+R\+I\+DA}~100\hypertarget{dataManager_8h_ab19243b566a5c51ae757c231c311fdcb}{}\label{dataManager_8h_ab19243b566a5c51ae757c231c311fdcb}
+
+\item 
+\#define {\bfseries T\+A\+M\+A\+N\+H\+O\+\_\+\+M\+A\+X\+I\+M\+O\+\_\+\+C\+O\+R\+R\+I\+DA}~500\hypertarget{dataManager_8h_acd06a70fc4cdc364fdc64990a7cf82c2}{}\label{dataManager_8h_acd06a70fc4cdc364fdc64990a7cf82c2}
+
+\end{DoxyCompactItemize}
+\subsection*{Funções}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename T $>$ }\\bool \hyperlink{dataManager_8h_a05dd8f0b1643681f147e1f63350a7994}{nome\+Existe} (\hyperlink{classList}{List}$<$ T $>$ $\ast$s, string \&nome, const char $\ast$k)
+\begin{DoxyCompactList}\small\item\em Recebe um objeto de Lista, \hyperlink{classSapo}{Sapo} ou \hyperlink{classCorrida}{Corrida}, e verifica se o nome já existe dentro da Lista. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\void \hyperlink{dataManager_8h_a1287d4bcfd11e42a9317594b9b67a055}{atualizar\+Dados} (\hyperlink{classList}{List}$<$ T $>$ $\ast$l, const char $\ast$c)
+\begin{DoxyCompactList}\small\item\em Azualiza os dados do arquivo. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T , typename Y $>$ }\\int \hyperlink{dataManager_8h_a18ca9eeda06145dcc9665c0280ea5328}{carregar\+Dados} (\hyperlink{classList}{List}$<$ T $>$ $\ast$l, const char $\ast$c)
+\begin{DoxyCompactList}\small\item\em Carrega os dados do arquivo em classes e os insere dentro da Lista. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\void \hyperlink{dataManager_8h_a4f92c9c9f7ca2bf8af75dc753854d46a}{salvar\+Dado} (T obj, const char $\ast$c)
+\begin{DoxyCompactList}\small\item\em Salva um objeto T no arquivo (onde T pode ser um \hyperlink{classSapo}{Sapo} ou uma \hyperlink{classCorrida}{Corrida}) \end{DoxyCompactList}\item 
+void \hyperlink{dataManager_8h_a30f3d19d9141516d7010284a211e211b}{criar\+Sapo} (\hyperlink{classList}{List}$<$ \hyperlink{classSapo}{Sapo} $\ast$ $>$ $\ast$s, int \&id)
+\begin{DoxyCompactList}\small\item\em Cria uma classe sapo e a insere na Lista. \end{DoxyCompactList}\item 
+void \hyperlink{dataManager_8h_a6967a96d94ca5e70a55419cc4a2609fb}{criar\+Corrida} (\hyperlink{classList}{List}$<$ \hyperlink{classCorrida}{Corrida} $\ast$ $>$ $\ast$c, int \&id)
+\begin{DoxyCompactList}\small\item\em Cria uma classe corrida e a insere na Lista. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Descrição detalhada}
+Responsável por carregar e salvar as informaçoes das classes em arquivo. 
+
+\begin{DoxyAuthor}{Autor}
+Ariel Oliveira (\href{mailto:ariel.oliveira01@gmail.com}{\tt ariel.\+oliveira01@gmail.\+com}) 
+\end{DoxyAuthor}
+\begin{DoxySince}{Desde}
+20/03/2018 
+\end{DoxySince}
+\begin{DoxyDate}{Data}
+16/06/2018 
+\end{DoxyDate}
+
+
+\subsection{Documentação das funções}
+\index{data\+Manager.\+h@{data\+Manager.\+h}!atualizar\+Dados@{atualizar\+Dados}}
+\index{atualizar\+Dados@{atualizar\+Dados}!data\+Manager.\+h@{data\+Manager.\+h}}
+\subsubsection[{\texorpdfstring{atualizar\+Dados(\+List$<$ T $>$ $\ast$l, const char $\ast$c)}{atualizarDados(List< T > *l, const char *c)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ void atualizar\+Dados (
+\begin{DoxyParamCaption}
+\item[{{\bf List}$<$ T $>$ $\ast$}]{l, }
+\item[{const char $\ast$}]{c}
+\end{DoxyParamCaption}
+)}\hypertarget{dataManager_8h_a1287d4bcfd11e42a9317594b9b67a055}{}\label{dataManager_8h_a1287d4bcfd11e42a9317594b9b67a055}
+
+
+Azualiza os dados do arquivo. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em $\ast$l} & Objeto genérico de uma T\+AD Lista \\
+\hline
+{\em $\ast$c} & Uma constante de char que contém o diretório do arquivo \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+void 
+\end{DoxyReturn}
+\index{data\+Manager.\+h@{data\+Manager.\+h}!carregar\+Dados@{carregar\+Dados}}
+\index{carregar\+Dados@{carregar\+Dados}!data\+Manager.\+h@{data\+Manager.\+h}}
+\subsubsection[{\texorpdfstring{carregar\+Dados(\+List$<$ T $>$ $\ast$l, const char $\ast$c)}{carregarDados(List< T > *l, const char *c)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , typename Y $>$ int carregar\+Dados (
+\begin{DoxyParamCaption}
+\item[{{\bf List}$<$ T $>$ $\ast$}]{l, }
+\item[{const char $\ast$}]{c}
+\end{DoxyParamCaption}
+)}\hypertarget{dataManager_8h_a18ca9eeda06145dcc9665c0280ea5328}{}\label{dataManager_8h_a18ca9eeda06145dcc9665c0280ea5328}
+
+
+Carrega os dados do arquivo em classes e os insere dentro da Lista. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em $\ast$l} & Objeto genérico de uma T\+AD Lista \\
+\hline
+{\em $\ast$c} & Uma constante de char que contém o diretório do arquivo \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+void 
+\end{DoxyReturn}
+\index{data\+Manager.\+h@{data\+Manager.\+h}!criar\+Corrida@{criar\+Corrida}}
+\index{criar\+Corrida@{criar\+Corrida}!data\+Manager.\+h@{data\+Manager.\+h}}
+\subsubsection[{\texorpdfstring{criar\+Corrida(\+List$<$ Corrida $\ast$ $>$ $\ast$c, int \&id)}{criarCorrida(List< Corrida * > *c, int &id)}}]{\setlength{\rightskip}{0pt plus 5cm}void criar\+Corrida (
+\begin{DoxyParamCaption}
+\item[{{\bf List}$<$ {\bf Corrida} $\ast$ $>$ $\ast$}]{c, }
+\item[{int \&}]{id}
+\end{DoxyParamCaption}
+)}\hypertarget{dataManager_8h_a6967a96d94ca5e70a55419cc4a2609fb}{}\label{dataManager_8h_a6967a96d94ca5e70a55419cc4a2609fb}
+
+
+Cria uma classe corrida e a insere na Lista. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em $\ast$s} & Objeto de uma classe (\hyperlink{classCorrida}{Corrida}) \\
+\hline
+{\em \&id} & Inteiro que representa o ID da próximo corrida a ser inserida na lista \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+void 
+\end{DoxyReturn}
+\index{data\+Manager.\+h@{data\+Manager.\+h}!criar\+Sapo@{criar\+Sapo}}
+\index{criar\+Sapo@{criar\+Sapo}!data\+Manager.\+h@{data\+Manager.\+h}}
+\subsubsection[{\texorpdfstring{criar\+Sapo(\+List$<$ Sapo $\ast$ $>$ $\ast$s, int \&id)}{criarSapo(List< Sapo * > *s, int &id)}}]{\setlength{\rightskip}{0pt plus 5cm}void criar\+Sapo (
+\begin{DoxyParamCaption}
+\item[{{\bf List}$<$ {\bf Sapo} $\ast$ $>$ $\ast$}]{s, }
+\item[{int \&}]{id}
+\end{DoxyParamCaption}
+)}\hypertarget{dataManager_8h_a30f3d19d9141516d7010284a211e211b}{}\label{dataManager_8h_a30f3d19d9141516d7010284a211e211b}
+
+
+Cria uma classe sapo e a insere na Lista. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em $\ast$s} & Objeto de uma classe (\hyperlink{classSapo}{Sapo}) \\
+\hline
+{\em \&id} & Inteiro que representa o ID do próximo sapo a ser inserido na lista \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+void 
+\end{DoxyReturn}
+\index{data\+Manager.\+h@{data\+Manager.\+h}!nome\+Existe@{nome\+Existe}}
+\index{nome\+Existe@{nome\+Existe}!data\+Manager.\+h@{data\+Manager.\+h}}
+\subsubsection[{\texorpdfstring{nome\+Existe(\+List$<$ T $>$ $\ast$s, string \&nome, const char $\ast$k)}{nomeExiste(List< T > *s, string &nome, const char *k)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ bool nome\+Existe (
+\begin{DoxyParamCaption}
+\item[{{\bf List}$<$ T $>$ $\ast$}]{s, }
+\item[{string \&}]{nome, }
+\item[{const char $\ast$}]{k}
+\end{DoxyParamCaption}
+)}\hypertarget{dataManager_8h_a05dd8f0b1643681f147e1f63350a7994}{}\label{dataManager_8h_a05dd8f0b1643681f147e1f63350a7994}
+
+
+Recebe um objeto de Lista, \hyperlink{classSapo}{Sapo} ou \hyperlink{classCorrida}{Corrida}, e verifica se o nome já existe dentro da Lista. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em $\ast$s} & Objeto genérico de uma T\+AD Lista \\
+\hline
+{\em \&nome} & Uma string contendo o nome a ser comparado \\
+\hline
+{\em $\ast$k} & Uma constante de char que será impresso na tela \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+true Se o nome existir. Caso contrário, retorna false. 
+\end{DoxyReturn}
+\index{data\+Manager.\+h@{data\+Manager.\+h}!salvar\+Dado@{salvar\+Dado}}
+\index{salvar\+Dado@{salvar\+Dado}!data\+Manager.\+h@{data\+Manager.\+h}}
+\subsubsection[{\texorpdfstring{salvar\+Dado(\+T obj, const char $\ast$c)}{salvarDado(T obj, const char *c)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ void salvar\+Dado (
+\begin{DoxyParamCaption}
+\item[{T}]{obj, }
+\item[{const char $\ast$}]{c}
+\end{DoxyParamCaption}
+)}\hypertarget{dataManager_8h_a4f92c9c9f7ca2bf8af75dc753854d46a}{}\label{dataManager_8h_a4f92c9c9f7ca2bf8af75dc753854d46a}
+
+
+Salva um objeto T no arquivo (onde T pode ser um \hyperlink{classSapo}{Sapo} ou uma \hyperlink{classCorrida}{Corrida}) 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em obj} & Objeto de uma classe (\hyperlink{classSapo}{Sapo} ou \hyperlink{classCorrida}{Corrida}) \\
+\hline
+{\em $\ast$c} & Uma constante de char que contém o diretório do arquivo \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+void 
+\end{DoxyReturn}
